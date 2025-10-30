@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: 084828598848.dkr.ecr.us-east-1.amazonaws.com/cartoon:latest
+          image: 084828598848.dkr.ecr.us-east-1.amazonaws.com/cartoon:v1.0.0
           ports:
             - containerPort: 8080
           resources:
