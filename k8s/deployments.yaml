@@ -1,31 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "myapp-deployment"
+  name: myapp-deployment
   labels:
-    app: "myapp"
-apiVersion: "apps/v1"
-kind: "Deployment"
+    app: myapp
 spec:
-  template:
-    metadata:
-      labels:
-        app: "myapp"
-    spec:
-      imagePullSecrets:
-      - name: "ecr-secret"
-      containers:
-      - image: "084828598848.dkr.ecr.us-east-1.amazonaws.com/cartoon:v1.0.0"
-        imagePullPolicy: "Always"
-        name: "myapp"
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 8080
   replicas: 1
   selector:
     matchLabels:
-      app: "myapp"
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
